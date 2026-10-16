@@ -1,0 +1,28 @@
+Paranada - aplikasi HP
+
+Isi folder ini adalah "pembungkus" aplikasi Paranada. Setelah diunggah ke GitHub Pages, siswa cukup membuka
+alamatnya di Chrome HP lalu menekan "Instal aplikasi". Ikon Paranada muncul di layar utama dan daftar aplikasi,
+aplikasinya terbuka layar penuh, dan tombol Kembali di HP berpindah antarlayar.
+
+Tautan Apps Script yang dibungkus:
+https://script.google.com/a/ypmalfitrah.sch.id/macros/s/AKfycbyrawYbh6zWFjs_wNz_ZRB7mT5B3xImxxGbZ_z7O_fJDdRL4I9-d9aensHcmo79QGse/exec
+
+CARA MEMASANG (sekali saja, gratis, sekitar 10 menit)
+1. Buka https://github.com lalu buat akun (Sign up) bila belum punya.
+2. Tekan tombol + di kanan atas > New repository. Nama: paranada. Pilih Public. Tekan Create repository.
+3. Pada halaman repository, klik tautan "uploading an existing file".
+   Ekstrak ZIP ini, buka foldernya, pilih SEMUA berkas di dalamnya (bukan foldernya), lalu seret ke halaman itu.
+   Tunggu sampai semua berkas tampil, lalu tekan Commit changes.
+4. Buka Settings > Pages. Pada "Branch" pilih main dan folder / (root), lalu Save.
+5. Tunggu 1-2 menit. Alamat aplikasi: https://NAMA-AKUN.github.io/paranada/
+6. Tulis alamat itu di Paranada > Mode guru > Pengaturan > Aplikasi di HP > "Alamat aplikasi HP", lalu Simpan.
+   Tautan bagikan tiap pelajaran otomatis memakai alamat ini, dan ikon tab ikut berganti.
+
+DI HP SISWA
+- Buka alamat aplikasi di Chrome. Tekan "Instal aplikasi" saat ditawarkan,
+  atau menu titik tiga > Instal aplikasi / Tambahkan ke layar utama > Instal.
+- Di iPhone (Safari): tombol Bagikan > Tambahkan ke Layar Utama.
+
+BILA TAUTAN APPS SCRIPT BERUBAH (deployment baru dengan alamat lain): unduh paket lagi dari Pengaturan,
+lalu unggah ulang index.html ke repository yang sama. Memperbarui deployment yang sama tidak mengubah tautan,
+jadi tidak perlu mengunggah ulang.

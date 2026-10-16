@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Paranada</title>
+<meta name="description" content="Materi, simulasi, dan latihan soal Seni Budaya.">
+<meta name="theme-color" content="#FAF7F0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Paranada">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="ikon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="ikon-192.png">
+<link rel="apple-touch-icon" href="ikon-180.png">
+<style>
+html,body{margin:0;height:100%;background:#FAF7F0;overflow:hidden}
+#app{position:fixed;top:0;left:0;width:100%;height:100%;border:0;display:block;background:#FAF7F0}
+#tutup{position:fixed;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;background:#FAF7F0;color:#1F1B3D;font:500 16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-align:center;transition:opacity .35s}
+#tutup.hilang{opacity:0;visibility:hidden}
+#tutup img{width:104px;height:104px}
+#tutup b{display:block;font-size:20px;font-weight:800}
+#tutup i{display:block;width:120px;height:6px;border-radius:3px;background:#E7E1D3;overflow:hidden;position:relative}
+#tutup i:after{content:"";position:absolute;top:0;left:-40%;width:40%;height:100%;border-radius:3px;background:#3D5AFE;animation:jalan 1.1s ease-in-out infinite}
+@keyframes jalan{to{left:100%}}
+#tutup button{font:inherit;color:#fff;background:#3D5AFE;border:2.5px solid #1F1B3D;border-radius:14px;box-shadow:0 4px 0 #1F1B3D;padding:11px 22px;margin-top:4px}
+#tutup.gagal i{display:none}
+</style>
+</head>
+<body>
+<iframe id="app" title="Paranada" allow="autoplay; fullscreen; clipboard-write; web-share" allowfullscreen></iframe>
+<div id="tutup" role="status"><img src="ikon-192.png" alt=""><div id="pesan"><b>Paranada</b>Memuat…</div><i></i></div>
+<script>
+(function(){
+  var APP="https://script.google.com/a/ypmalfitrah.sch.id/macros/s/AKfycbyrawYbh6zWFjs_wNz_ZRB7mT5B3xImxxGbZ_z7O_fJDdRL4I9-d9aensHcmo79QGse/exec";
+  var f=document.getElementById("app"),t=document.getElementById("tutup"),p=document.getElementById("pesan"),jam=0;
+  var q=location.search.replace(/^\?/,""),src=APP+(APP.indexOf("?")<0?"?":"&")+"pwa=1"+(q?"&"+q:"");
+  function pesan(h,b){t.className=b?"gagal":"";p.innerHTML=h;var u=document.getElementById("ulang");if(u)u.onclick=function(){location.reload()}}
+  function muat(){if(navigator.onLine===false){pesan("<b>Tidak ada internet</b>Sambungkan HP ke internet, lalu coba lagi.<br><button id=\"ulang\">Coba lagi</button>",1);return}
+    f.src=src;jam=setTimeout(function(){pesan("<b>Masih memuat…</b>Sinyal sedang lambat.<br><button id=\"ulang\">Muat ulang</button>",1)},25000)}
+  f.addEventListener("load",function(){if(!f.getAttribute("src"))return;clearTimeout(jam);t.className="hilang"});
+  window.addEventListener("online",function(){if(!f.getAttribute("src"))muat()});
+  // tombol Kembali: aplikasi di dalam bingkai meminta riwayat dimundurkan (hanya dari bingkai milik aplikasi ini)
+  window.addEventListener("message",function(e){var d=e.data;if(!d||d.paranada!==1)return;var w=e.source,ok=false;
+    for(var i=0;i<8&&w;i++){if(w===f.contentWindow){ok=true;break}if(w===w.parent)break;w=w.parent}
+    if(!ok)return;if(d.hi===1){w=e.source;w.postMessage({paranada:1,ok:1},"*");return}var n=+d.go;if(n<0&&n>=-20)history.go(n)});
+  if("serviceWorker" in navigator)window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})});
+  muat();
+})();
+</script>
+</body>
+</html>
